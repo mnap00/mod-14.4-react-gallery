@@ -1,21 +1,42 @@
-var GalleryItem = React.createClass({
-    propTypes: {
-        image: React.PropTypes.object.isRequired
+var movies = [
+    {
+        id: 1,
+        title: 'Harry Potter',
+        desc: 'A movie about a wizard',
+        img: 'images/harry-potter.jpg'
     },
-    render: function() {
-        return (
-            React.createElement('div', {},
-                React.createElement('h2', {}, this.props.image.name),
-                React.createElement('img', {src: this.props.image.src})
-            )
-        )
+    {
+        id: 2,
+        title: 'The Lion King',
+        desc: 'A movie about a king of the Pride Lands',
+        img: 'images/lion-king.jpg'
+    },
+    {
+        id: 3,
+        title: 'Star Wars',
+        desc: 'Fantasy story in space',
+        img: 'images/star-wars.jpg'
+    },
+    {
+        id: 4,
+        title: 'Raiders of the Lost Ark',
+        desc: 'Adventures of Indiana Jones - the archeologist',
+        img: 'images/indiana-jones.jpg'
     }
+];
+
+var moviesElements = movies.map(function(movie) {
+    return React.createElement('li', {key: movie.id},
+        React.createElement('h2', {}, movie.title),
+        React.createElement('p', {}, movie.desc),
+        React.createElement('img', {src: movie.img})
+    );
 });
 
-var image = {
-    name: 'kitten',
-    src: 'https://i.imgur.com/n8OYCzR.png'
-};
+var element =
+    React.createElement('div', {},
+        React.createElement('h1', {}, 'Private Movie Database'),
+        React.createElement('ul', {}, moviesElements)
+    );
 
-var element = React.createElement(GalleryItem, {image: image});
 ReactDOM.render(element, document.getElementById('app'));
