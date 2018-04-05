@@ -14,7 +14,7 @@ var GalleryItem = React.createClass({
 
 var image = {
     name: 'kitten',
-    src: 'http://imgur.com/n8OYCzR.png'
+    src: 'https://i.imgur.com/n8OYCzR.png'
 };
 
 var element = React.createElement(GalleryItem, {image: image});

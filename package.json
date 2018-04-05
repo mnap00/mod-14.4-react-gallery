@@ -1,0 +1,16 @@
+{
+  "name": "react-gallery",
+  "version": "0.4.0",
+  "description": "React Gallery",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "gallery",
+    "prop-types"
+  ],
+  "author": "mnap00",
+  "license": "ISC"
+}
