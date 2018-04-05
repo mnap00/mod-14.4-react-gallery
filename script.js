@@ -25,18 +25,31 @@ var movies = [
     }
 ];
 
-var moviesElements = movies.map(function(movie) {
-    return React.createElement('li', {key: movie.id},
-        React.createElement('h2', {}, movie.title),
-        React.createElement('p', {}, movie.desc),
-        React.createElement('img', {src: movie.img})
-    );
+var Movie = React.createClass({
+    render: function() {
+        return React.createElement('li', {key: this.props.movie.id},
+            React.createElement('h2', {}, this.props.movie.title),
+            React.createElement('p', {}, this.props.movie.desc),
+            React.createElement('img', {src: this.props.movie.img})
+        )
+    },
+    propTypes: {
+        movie: React.PropTypes.object.isRequired
+    }
 });
+
+//var moviesElements = movies.map(function(movie) {
+//    return React.createElement('li', {key: movie.id},
+//        React.createElement('h2', {}, movie.title),
+//        React.createElement('p', {}, movie.desc),
+//        React.createElement('img', {src: movie.img})
+//    );
+//});
 
 var element =
     React.createElement('div', {},
         React.createElement('h1', {}, 'Private Movie Database'),
-        React.createElement('ul', {}, moviesElements)
+        React.createElement(Movie, {key: movie.id})
     );
 
 ReactDOM.render(element, document.getElementById('app'));
