@@ -25,14 +25,24 @@ var movies = [
     }
 ];
 
-//var MoviesList = React.createClass({
-//    render: function() {
-//        return React.createElement('div', {}.
-//            React.createElement('h1', {}, 'Private Movie Database'),
-//            //
-//        )
-//    }
-//});
+var MoviesList = React.createClass({
+    propTypes: {
+        movies: React.PropTypes.array.isRequired
+    },
+    render: function() {
+        return (
+            React.createElement('div', {},
+                React.createElement('h1', {}, 'Private Movie Database'),
+                React.createElement('ul', {},
+                    this.props.movies.map(function(movie) {
+                        return React.createElement(Movie,
+                            {key: movie.id, movie: movie});
+                    })
+                )
+            )
+        );
+    }
+});
 
 var Movie = React.createClass({
     propTypes: {
@@ -82,14 +92,5 @@ var MovieImage = React.createClass({
     }
 })
 
-var element =
-    React.createElement('div', {},
-        React.createElement('h1', {}, 'Private Movie Database'),
-        React.createElement('ul', {},
-            movies.map(function(movie) {
-                return React.createElement(Movie, {key: movie.id, movie: movie});
-            })
-        )
-    );
-
+var element = React.createElement(MoviesList, {movies: movies});
 ReactDOM.render(element, document.getElementById('app'));
